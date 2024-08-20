@@ -66,16 +66,16 @@ router.put('/users/:id', async (req, res) => {
 
 router.delete('/users/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (user == null) {
-      return res.status(404).json({ message: 'User not found' });
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'Expense not found' });
     }
-
-    await user.remove();
-    res.json({ message: 'User deleted' });
+    res.json({ message: 'Expense deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+
 
 export default router;

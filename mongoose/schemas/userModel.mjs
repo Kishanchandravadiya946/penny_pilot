@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { Schema } from 'mongoose';
+// import AutoIncrementFactory from 'mongoose-sequence';
 
+// const AutoIncrement = AutoIncrementFactory(mongoose);
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -23,7 +25,7 @@ const userSchema = new mongoose.Schema({
     default: ''
   },
   pro_image: {
-    type: String, // This might be a URL or a path to the image
+    type: String, 
     default: ''
   },
   date: {
@@ -32,11 +34,11 @@ const userSchema = new mongoose.Schema({
   },
   friend: [{
     type: Schema.Types.ObjectId,
-    ref: 'User' // Assuming 'User' is the name of the model for users
+    ref: 'User' 
   }]
 });
 
-// Create the model
+// userSchema.plugin(AutoIncrement,{inc_field:'_id',start_seq:1});
 export const User = mongoose.model('User', userSchema);
 
 
