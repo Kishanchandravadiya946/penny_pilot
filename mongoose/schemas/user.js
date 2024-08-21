@@ -14,27 +14,27 @@ const userSchema = new mongoose.Schema({
     unique: true,
     match: [/.+@.+\..+/, 'Please enter a valid email address']
   },
-  mobile_number: {
+  mobileNumber: {
     type: String,
     required: true,
     unique: true,
     match: [/^\+?[1-9]\d{1,14}$/, 'Please enter a valid mobile number']
   },
-  pro_bio: {
-    type: String,
-    default: ''
-  },
-  pro_image: {
+  proImage: {
     type: String, 
     default: ''
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now()
   },
-  friend: [{
-    type: Schema.Types.ObjectId,
+  friends: [{
+    type: mongoose.Types.ObjectId,
     ref: 'User' 
+  }],
+  dummyFriends: [{
+    type: mongoose.Types.ObjectId,
+    ref: 'Guest' 
   }]
 });
 
